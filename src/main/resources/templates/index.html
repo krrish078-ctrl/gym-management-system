@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gym Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2>GYM MANAGEMENT SYSTEM</h2>
+
+    <div>
+        <a href="/">Dashboard</a>
+        <a href="/members">Members</a>
+        <a href="/trainers">Trainers</a>
+        <a href="/attendance">Attendance</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Gym Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Members</h3>
+            <p th:text="${memberCount}">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Trainers</h3>
+            <p th:text="${trainerCount}">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Attendance Records</h3>
+            <p th:text="${attendanceCount}">0</p>
+        </div>
+
+    </div>
+
+    <div class="welcome">
+        <h2>Welcome to Gym Management System</h2>
+        <p>
+            Manage members, trainers and attendance from one place.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

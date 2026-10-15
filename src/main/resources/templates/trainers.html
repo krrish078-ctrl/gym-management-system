@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Trainers</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2>GYM MANAGEMENT SYSTEM</h2>
+
+    <div>
+        <a href="/">Dashboard</a>
+        <a href="/members">Members</a>
+        <a href="/trainers">Trainers</a>
+        <a href="/attendance">Attendance</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Trainer Management</h1>
+
+    <form action="/trainers/add" method="post">
+
+        <input name="name"
+               placeholder="Trainer Name"
+               required>
+
+        <input name="specialization"
+               placeholder="Specialization"
+               required>
+
+        <input name="phone"
+               placeholder="Phone"
+               required>
+
+        <input name="email"
+               type="email"
+               placeholder="Email"
+               required>
+
+        <button type="submit">Add Trainer</button>
+
+    </form>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="trainer : ${trainers}">
+
+            <td th:text="${trainer.id}"></td>
+            <td th:text="${trainer.name}"></td>
+            <td th:text="${trainer.specialization}"></td>
+            <td th:text="${trainer.phone}"></td>
+            <td th:text="${trainer.email}"></td>
+
+            <td>
+                <a class="delete"
+                   th:href="@{/trainers/delete/{id}(id=${trainer.id})}">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

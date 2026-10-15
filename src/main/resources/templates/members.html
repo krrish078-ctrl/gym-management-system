@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Members</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2>GYM MANAGEMENT SYSTEM</h2>
+
+    <div>
+        <a href="/">Dashboard</a>
+        <a href="/members">Members</a>
+        <a href="/trainers">Trainers</a>
+        <a href="/attendance">Attendance</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Member Management</h1>
+
+    <form action="/members/add" method="post">
+
+        <input name="name" placeholder="Member Name" required>
+
+        <input name="email" type="email"
+               placeholder="Email" required>
+
+        <input name="phone"
+               placeholder="Phone" required>
+
+        <select name="membershipType" required>
+            <option value="">Membership Type</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Yearly">Yearly</option>
+        </select>
+
+        <input name="joinDate"
+               type="date"
+               required>
+
+        <button type="submit">Add Member</button>
+
+    </form>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Membership</th>
+            <th>Join Date</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="member : ${members}">
+
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.email}"></td>
+            <td th:text="${member.phone}"></td>
+            <td th:text="${member.membershipType}"></td>
+            <td th:text="${member.joinDate}"></td>
+
+            <td>
+                <a class="delete"
+                   th:href="@{/members/delete/{id}(id=${member.id})}">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
